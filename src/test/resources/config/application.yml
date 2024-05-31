@@ -15,15 +15,7 @@
 
 spring:
   application:
-    name: MyHipster
-  cloud:
-    consul:
-      discovery:
-        enabled: false
-        instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
-      config:
-        enabled: false
-      enabled: false
+    name: myHipster
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -49,13 +41,6 @@ spring:
         size: 20
   thymeleaf:
     mode: HTML
-  # Allow SecurityConfiguration to initialize w/o specifying an empty issuer-uri is OK
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: http://DO_NOT_CALL:9080/realms/jhipster
 
 server:
   port: 10344
@@ -70,7 +55,7 @@ jhipster:
   clientApp:
     name: 'myHipsterApp'
   mail:
-    from: MyHipster@localhost.com
+    from: myHipster@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender
@@ -80,6 +65,10 @@ jhipster:
       host: localhost
       port: 5000
       ring-buffer-size: 512
+  security:
+    remember-me:
+      # security key (this key should be unique for your application, and kept secret)
+      key: 0d7c837c488fc9c8451554609bfad2ec33ae11bc2809e3735dc6bee53ca12052cb6d45a0d0c9180701dceb9709e8f46fae33
 
 # ===================================================================
 # Application specific properties
